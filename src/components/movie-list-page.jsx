@@ -16,32 +16,29 @@ class MovieListPage extends Component {
     this.props.dispatch(getGenreAPICall(GENRE_API_URL));
   }
   filterMoviesOnGenre = (e) => {
-    this.filtered = [];
     if(e.currentTarget.checked) {
       this.checked.push(e.currentTarget.value);
-      for(let i = 0; i < this.props.movieresults.results.length; i++) {
-        let hash = (this.props.movieresults.results[i].genre_names).toString();
-        let count = 0;
-        for(let z = 0; z < this.checked.length; z++){
-          if ((hash).indexOf(this.checked[z]) > -1){
-            count++;
-            if(count === this.checked.length){
-              this.filtered.push(this.props.movieresults.results[i]);
-            }
-          }
-        }
-      }
     }else if(!e.currentTarget.checked){
-      this.checked.splice(e.currentTarget.value, 1);
-        for(let j = 0; j < this.filtered.length; j++) {
-          if(this.filtered[j].genre_names.indexOf(e.currentTarget.value) > -1){
-              this.filtered.splice(j, 1);
+      this.checked.splice(this.checked.indexOf(e.currentTarget.value), 1);
+    }
+    this.filterLogic();
+    this.props.dispatch(getSelectedGenre([...new Set(this.filtered)], this.checked.length));
+  }
+  filterLogic = () => {
+    this.filtered = [];
+    for(let i = 0; i < this.props.movieresults.results.length; i++) {
+      let hash = (this.props.movieresults.results[i].genre_names).toString();
+      let count = 0;
+      for(let z = 0; z < this.checked.length; z++){
+        if ((hash).indexOf(this.checked[z]) > -1){
+          count++;
+          if(count === this.checked.length){
+            this.filtered.push(this.props.movieresults.results[i]);
           }
         }
       }
-      
-      this.props.dispatch(getSelectedGenre([...new Set(this.filtered)], this.checked.length));
     }
+  }
   filterMoviesOnRating= (e) =>{
     for(let i = 0; i < this.props.movieresults.results.length; i++) {
       if (this.props.movieresults.results[i].vote_average >= Number(e.currentTarget.value)){
