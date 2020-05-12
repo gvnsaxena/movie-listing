@@ -32,4 +32,4 @@ jobs:
         app-name: 'mygvapp(mygvapp-test1)'
         slot-name: 'mygvapp-test1'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_d3b72b4d3785400fa87ea2f8cbb5857a }}
-        package: .
+        package: dist
