@@ -31,4 +31,5 @@ jobs:
         app-name: 'gv-node'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_d3def0d80fa94d9ab7663dbd0513bd3c }}
-        package: '/dist/index.html'
+        package: './dist'
+        customWebConfig: '-Handler iisnode -NodeStartFile server.js -appType node'
