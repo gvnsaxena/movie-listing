@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/9f10b690-75db-4e88-a5c4-ccc39decc3a6/resourceGroups/whizlab-rg/providers/Microsoft.Web/sites/MovieListingTestApp",
+    "appService.deploySubpath": ""
+}
