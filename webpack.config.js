@@ -16,7 +16,7 @@ entry: {
 devtool: 'source-map',
 devServer: {
   contentBase: path.join(__dirname, `dist`),
-  port: 9000
+  port: 7000
 },
 module: {
     rules: [
